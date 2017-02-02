@@ -90,13 +90,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>測試!測試!<br>雖然辦了github好一陣子，但一直都沒有多加利用有點可惜。<br>利用hexo來弄Blog，似乎是個不錯的主意</p>
+        <p>#測試!測試!<br>雖然辦了github好一陣子，但一直都沒有多加利用有點可惜。<br>利用hexo來弄Blog，似乎是個不錯的主意</p>
+<p>來試試看有沒有支援haskell語法顯示</p>
 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> System.IO</div><div class="line"><span class="keyword">import</span> Data.Char</div><div class="line"><span class="keyword">import</span> Data.List</div><div class="line"><span class="keyword">import</span> Control.Concurrent</div><div class="line"><span class="keyword">import</span> GHC.Conc.Sync</div><div class="line"></div><div class="line"><span class="comment">-- 三節棍 型態</span></div><div class="line"><span class="class"><span class="keyword">data</span> <span class="type">Node</span> = <span class="type">Node</span> &#123;<span class="title">getX</span>:: <span class="type">Float</span>,<span class="title">getY</span>::<span class="type">Float</span>&#125; <span class="keyword">deriving</span> (<span class="type">Show</span>)</span></div><div class="line"><span class="class"><span class="keyword">data</span> <span class="type">ThreeStick</span> = <span class="type">ThreeStick</span> <span class="type">Node</span> <span class="type">Node</span> <span class="type">Node</span> <span class="type">Node</span></span></div><div class="line"></div><div class="line"><span class="title">stickWork</span> :: (<span class="type">ThreeStick</span>, <span class="type">ThreeStick</span>) -&gt; (<span class="type">ThreeStick</span>, <span class="type">ThreeStick</span>)</div><div class="line"><span class="title">stickWork</span> (a,b) = (a,b)</div><div class="line"></div><div class="line"><span class="title">canvas</span> :: [<span class="type">Node</span>] -&gt; [<span class="type">Node</span>]</div><div class="line"><span class="title">canvas</span> [] = []</div><div class="line"></div><div class="line"><span class="title">runAfterDelay</span> :: <span class="type">Int</span> -&gt; <span class="type">IO</span> () -&gt; <span class="type">IO</span> <span class="type">GHC</span>.<span class="type">Conc</span>.<span class="type">Sync</span>.<span class="type">ThreadId</span></div><div class="line"><span class="title">main</span> = <span class="keyword">do</span> line &lt;- fmap (intersperse '-' . reverse . map toUpper) getLine</div><div class="line">          <span class="keyword">case</span> <span class="number">123</span> <span class="keyword">of</span> <span class="number">123</span> -&gt; putStrLn <span class="string">"hello"</span></div><div class="line">                      <span class="number">789</span> -&gt; putStrLn <span class="string">"You"</span></div><div class="line">          putStrLn line</div><div class="line"></div><div class="line"><span class="title">runAfterDelay</span> t f = forkIO (threadDelay t &gt;&gt; f)</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kabuto412rock.github.io/2017/02/02/第一篇/" data-id="ciyo5zn8h0001ud7s4rjqq1jv" class="article-share-link">Share</a>
+      <a data-url="https://kabuto412rock.github.io/2017/02/02/第一篇/" data-id="ciyo61b0x0001ur7s1b5xadgi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kabuto412rock.github.io/2017/01/31/hello-world/" data-id="ciyo5zn8d0000ud7spoaogasl" class="article-share-link">Share</a>
+      <a data-url="https://kabuto412rock.github.io/2017/01/31/hello-world/" data-id="ciyo61b0t0000ur7sepsi6d8z" class="article-share-link">Share</a>
       
       
     </footer>
