@@ -15,7 +15,7 @@
 <meta property="og:description" content="首先我用來學習的教材是 趣學Haskell
 老實說我學習的速度算蠻緩慢的，大概也是因為我蠻會浪費時間的()&amp;gt; W &amp;lt;)但學習Haskell這件事我不太後悔，首先它是一個完全函數式導向的語言，所以你學到的將會大幅顛覆以往的程式語言學習，將像第一次學習程式語言一樣有趣。
 我曾學過Python,C,Java,JavaScript，這幾種語言本質都還是指令式語言，當然或許他們都有引進像是 一級">
-<meta property="og:updated_time" content="2017-02-15T08:18:11.000Z">
+<meta property="og:updated_time" content="2017-02-15T08:19:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Haskell入坑＿兩週多">
 <meta name="twitter:description" content="首先我用來學習的教材是 趣學Haskell
@@ -118,7 +118,7 @@
 <p>講這麼多，不如來試試看定義一個函數<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="title">fun1AddFun2</span> :: (<span class="type">Integral</span> a)=&gt; a -&gt; (a-&gt;a) -&gt; (a-&gt;a) -&gt; a</div><div class="line"><span class="title">fun1AddFun2</span> x fun1 fun2 = (fun1 x) + (fun2 x)</div><div class="line"></div><div class="line"><span class="comment">-- 實務上使用會像這樣</span></div><div class="line"><span class="title">fun1AddFun2</span> <span class="number">3</span> (+<span class="number">8</span>) (*<span class="number">9</span>)</div><div class="line">因為回傳為(<span class="number">3</span>+<span class="number">8</span>) + (<span class="number">3</span>*<span class="number">9</span>) ，</div><div class="line">所以結果為 <span class="number">38</span></div></pre></td></tr></table></figure></p>
 <p>基於curried function你可以定義更複雜的函數，<br>讓函數可以當作參數回傳，這便是高階函數。</p>
 <h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><h3 id="你描述它的長相，他照順序幫你檢查"><a href="#你描述它的長相，他照順序幫你檢查" class="headerlink" title="你描述它的長相，他照順序幫你檢查"></a>你描述它的長相，他照順序幫你檢查</h3><p>如果說哪個特性最希望程式語言都有，大概就是模式匹配。<br>因為用起來很方便！！！尤其是在定義 遞迴的終止條件。<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="title">factorial</span> :: <span class="type">Int</span> -&gt; <span class="type">Int</span></div><div class="line"><span class="title">factorial</span> <span class="number">0</span> = <span class="number">1</span></div><div class="line"><span class="title">factorial</span> <span class="number">1</span> = <span class="number">1</span></div><div class="line"><span class="title">factorial</span> n = n * factorial (n<span class="number">-1</span>)</div></pre></td></tr></table></figure></p>
-<p>就這樣 費波納契數列 get!<br>你可以在函數內寫大量if和括號，而是利用模式匹配去配對你的回傳值。<br>這種方式保留了程式可讀性。</p>
+<p>就這樣 費波納契數列 get!<br>你可以不用在函數內寫大量if和括號，而是利用模式匹配去配對你的回傳值。<br>這種方式保留了程式可讀性。</p>
 <h2 id="變數-Variables"><a href="#變數-Variables" class="headerlink" title="變數(Variables)"></a>變數(Variables)</h2><h3 id="你以為這是一條荊棘之路，但腳下正是那康莊大道"><a href="#你以為這是一條荊棘之路，但腳下正是那康莊大道" class="headerlink" title="你以為這是一條荊棘之路，但腳下正是那康莊大道"></a>你以為這是一條荊棘之路，但腳下正是那康莊大道</h3><p>你可能會覺得這有什麼好聊的？變數還不就是某個名稱代表某個值<br>然後可以取值…停！！！！<br>Haskell的變數就差不多這樣的功能。<br>你可不能對某個變數重新賦予值，在Haskell的等號更像是數學的等於。<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">let</span> a = <span class="number">5</span></div><div class="line">    a = <span class="number">7</span> <span class="comment">-- 這行會報錯，a不能同時等於5又等於7</span></div></pre></td></tr></table></figure></p>
 <p>可能看到這邊你會覺得這是種退化，這不就是像Java的final。<br>這算什麼新功能？!<br>舉例又要舉到Java，畢竟他是嚴謹的物件導向式語言。<br>你在一個class中宣告了一個全域變數，那在這個class內部的任何函數就能隨意使用，<br>當然你能利用一些public.private.protected去限定哪些成員能改變.讀取它。<br>但Haskell基本上就是函數的參數傳來傳去，<br>如果你不有效限制變數的範圍，那你還需要參數傳來傳去？！<br>既然用了Haskell，還是乖乖的利用函數吧！</p>
 <p>實作快速排序 c++ 跟Haskell 的差別，雖然quickSort有很多種…<br>但只用我最熟悉的舉例XD<br>雖說是C++但基本上都是c寫法，但兩種語言我都利用了遞迴。</p>
@@ -144,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kabuto412rock.github.io/2017/02/05/Haskell入坑＿兩週多/" data-id="ciz6orc8a0000tst64vi3dra8" class="article-share-link">Share</a>
+      <a data-url="https://kabuto412rock.github.io/2017/02/05/Haskell入坑＿兩週多/" data-id="ciz6ot41m0001u6t6gsj2cnz4" class="article-share-link">Share</a>
       
       
     </footer>
