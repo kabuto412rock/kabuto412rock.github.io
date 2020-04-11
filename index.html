@@ -1,330 +1,107 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>狂暴的歡愉終將以狂暴結束</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="記錄我的簡單生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="狂暴的歡愉終將以狂暴結束">
-<meta property="og:url" content="https://kabuto412rock.github.io/index.html">
-<meta property="og:site_name" content="狂暴的歡愉終將以狂暴結束">
-<meta property="og:description" content="記錄我的簡單生活">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="狂暴的歡愉終將以狂暴結束">
-<meta name="twitter:description" content="記錄我的簡單生活">
-  
-    <link rel="alternate" href="/atom.xml" title="狂暴的歡愉終將以狂暴結束" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
 
+<head>
+    <meta charset="utf-8">
+    <title>My first three.js app</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">狂暴的歡愉終將以狂暴結束</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">coding is fine</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kabuto412rock.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-Haskell入坑＿兩週多" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/05/Haskell入坑＿兩週多/" class="article-date">
-  <time datetime="2017-02-05T14:25:44.000Z" itemprop="datePublished">2017-02-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/05/Haskell入坑＿兩週多/">Haskell入坑＿兩週多</a>
-    </h1>
-  
+    <p>題目:
+        <span id="problem" style="font-size: 1.5em;">
+            ASDFGHI
+        </span>
+    </p>
+    <p>輸入:
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先我用來學習的教材是 <a href="&quot;https://drsexplorer.gitbooks.io/learnyouahaskell-zh/content/zh-tw/ch01/introduction.html&quot;">趣學Haskell</a></p>
-<p>老實說我學習的速度算蠻緩慢的，大概也是因為我蠻會浪費時間的()&gt; W &lt;)<br>但學習Haskell這件事我不太後悔，首先它是一個完全函數式導向的語言，<br>所以你學到的將會大幅顛覆以往的程式語言學習，將像第一次學習程式語言一樣有趣。</p>
-<p>我曾學過Python,C,Java,JavaScript，這幾種語言本質都還是指令式語言，<br>當然或許他們都有引進像是 一級函式或匿名函式的語法。（Ｃ應該是沒這回事XDD）<br>但大多數不會利用那些特性，或者即使用了仍然不太知道什麼是函數導向。</p>
-<p>有些人會覺得Haskell比這些擁有物件導向性質的指令式語言還難學，<br>我想這是對的，物件導向的思維不太能直接照搬過來。<br>相反地如果你是用Haskell入門，你大概也會很納悶為什麼要有全域變數 ？</p>
-<p>前言就到這，接下來將會介紹我覺得有趣的特性，暫且不提Monad因為我的程度還沒到那。<br>底下的測試基本上都可以利用ghci這個Haskell提供的互動環境進行。</p>
-<h2 id="懶惰-Lazy"><a href="#懶惰-Lazy" class="headerlink" title="懶惰(Lazy)"></a>懶惰(Lazy)</h2><h3 id="它很懶，但它保證做到。"><a href="#它很懶，但它保證做到。" class="headerlink" title="它很懶，但它保證做到。"></a>它很懶，但它保證做到。</h3><p>Haskell的懶惰會向你承諾(Promise)但不馬上執行，而是當你需要時才會去計算。<br>底下利用zip把 無限長的串列 跟 有限串列 合併成 一個 tuple的串列<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">zip</span> [<span class="number">1</span>,<span class="number">8.</span>.] [<span class="number">1.</span><span class="number">.5</span>]</div></pre></td></tr></table></figure></p>
-<p>結果： [(1,1),(8,2),(15,3),(22,4),(29,5)]</p>
-<p>當然你會覺得這不過是語法糖，說不定只是編譯器製造出串列是無限的假象。<br>Ok!那麼來看看下面這段程式碼<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">let</span> aList = [x * <span class="number">2</span> | x &lt;- [<span class="number">0</span>,<span class="number">1.</span>.] ]</div><div class="line"><span class="title">print</span> $ aList !! <span class="number">10000000</span></div></pre></td></tr></table></figure></p>
-<p>你用 List Comprehension製造一個[0,2,4..無限]的aList。<br>第二行，印出aList中索引為10000000的值，你會發現你的CPU使用率瞬間飆高。<br>而最終你得到 20000000。</p>
-<p>這說明什麼？你如果從不去拿索引為10000000的值，那你的程式就永遠不會計算。<br>懶惰很方便，這代表你可以盡可能地把計算延後，甚至永不計算程式不需要的事物。</p>
-<h2 id="咖哩函數-Curried-Function"><a href="#咖哩函數-Curried-Function" class="headerlink" title="咖哩函數(Curried Function)"></a>咖哩函數(Curried Function)</h2><h3 id="如果我告訴你，每個函數都只有一個參數？"><a href="#如果我告訴你，每個函數都只有一個參數？" class="headerlink" title="如果我告訴你，每個函數都只有一個參數？"></a>如果我告訴你，每個函數都只有一個參數？</h3><p>本質上Haskell每個函數都只有一個參數，<br>舉個例子<br>3 + 5 其實等價 (+ 3) 5<br>你可能會覺得那(+ 3)是什麼鬼？<br>他其實是接收一個參數的函數，而Haskell所有的函數其實都是如此。<br>如同底下這個函數add3<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">add3</span> :: <span class="type">Num</span> a =&gt; a -&gt; a</div><div class="line"><span class="title">add3</span> x = x + <span class="number">3</span></div></pre></td></tr></table></figure></p>
-<p>這邊先來分析函數add3如何定義，分成兩行來看</p>
-<ol>
-<li><p>前面的Num a =&gt;只是定義a 是一個數字，<br>在 =&gt; 後面定義的a才是參數本身，<br>而Haskell函數沒有例外最後一個參數是，回傳值本身!!<br>所以可得知add3 是個參數為一個數字，回傳值為數字。</p>
-</li>
-<li><p>函數定義要分兩半來看 左邊是代表參數，右邊是代表回傳值。<br>而add3則是函數本身，這邊用x代表參數，但實際上可以看成變數！<br>但仔細觀察，其實就是回傳一個(3+)函數。<br>所以可以改成如底下的code：</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">add3</span> :: <span class="type">Num</span> a =&gt; a -&gt; a</div><div class="line"><span class="title">add3</span> = (<span class="number">3</span>+)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>其實第一行那並不是必須的，ghc通常會從你的參數.回傳值推敲出可行的型態。<br>但為了避免做出一個非預期型態的函數，通常都會加上型別。<br>這樣ghc編譯時，也會檢查是否真的能符合你定義的型態類別。</p>
-<p>講這麼多，不如來試試看定義一個函數<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="title">fun1AddFun2</span> :: (<span class="type">Integral</span> a)=&gt; a -&gt; (a-&gt;a) -&gt; (a-&gt;a) -&gt; a</div><div class="line"><span class="title">fun1AddFun2</span> x fun1 fun2 = (fun1 x) + (fun2 x)</div><div class="line"></div><div class="line"><span class="comment">-- 實務上使用會像這樣</span></div><div class="line"><span class="title">fun1AddFun2</span> <span class="number">3</span> (+<span class="number">8</span>) (*<span class="number">9</span>)</div><div class="line">因為回傳為(<span class="number">3</span>+<span class="number">8</span>) + (<span class="number">3</span>*<span class="number">9</span>) ，</div><div class="line">所以結果為 <span class="number">38</span></div></pre></td></tr></table></figure></p>
-<p>基於curried function你可以定義更複雜的函數，<br>讓函數可以當作參數回傳，這便是高階函數。</p>
-<h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><h3 id="你描述它的長相，他照順序幫你檢查"><a href="#你描述它的長相，他照順序幫你檢查" class="headerlink" title="你描述它的長相，他照順序幫你檢查"></a>你描述它的長相，他照順序幫你檢查</h3><p>如果說哪個特性最希望程式語言都有，大概就是模式匹配。<br>因為用起來很方便！！！尤其是在定義 遞迴的終止條件。<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="title">factorial</span> :: <span class="type">Int</span> -&gt; <span class="type">Int</span></div><div class="line"><span class="title">factorial</span> <span class="number">0</span> = <span class="number">1</span></div><div class="line"><span class="title">factorial</span> <span class="number">1</span> = <span class="number">1</span></div><div class="line"><span class="title">factorial</span> n = n * factorial (n<span class="number">-1</span>)</div></pre></td></tr></table></figure></p>
-<p>就這樣 費波納契數列 get!<br>你可以不用在函數內寫大量if和括號，而是利用模式匹配去配對你的回傳值。<br>這種方式保留了程式可讀性。</p>
-<h2 id="變數-Variables"><a href="#變數-Variables" class="headerlink" title="變數(Variables)"></a>變數(Variables)</h2><h3 id="你以為這是一條荊棘之路，但腳下正是那康莊大道"><a href="#你以為這是一條荊棘之路，但腳下正是那康莊大道" class="headerlink" title="你以為這是一條荊棘之路，但腳下正是那康莊大道"></a>你以為這是一條荊棘之路，但腳下正是那康莊大道</h3><p>你可能會覺得這有什麼好聊的？變數還不就是某個名稱代表某個值<br>然後可以取值…停！！！！<br>Haskell的變數就差不多這樣的功能。<br>你可不能對某個變數重新賦予值，在Haskell的等號更像是數學的等於。<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="title">let</span> a = <span class="number">5</span></div><div class="line">    a = <span class="number">7</span> <span class="comment">-- 這行會報錯，a不能同時等於5又等於7</span></div></pre></td></tr></table></figure></p>
-<p>可能看到這邊你會覺得這是種退化，這不就是像Java的final。<br>這算什麼新功能？!<br>舉例又要舉到Java，畢竟他是嚴謹的物件導向式語言。<br>你在一個class中宣告了一個全域變數，那在這個class內部的任何函數就能隨意使用，<br>當然你能利用一些public.private.protected去限定哪些成員能改變.讀取它。<br>但Haskell基本上就是函數的參數傳來傳去，<br>如果你不有效限制變數的範圍，那你還需要參數傳來傳去？！<br>既然用了Haskell，還是乖乖的利用函數吧！</p>
-<p>實作快速排序 c++ 跟Haskell 的差別，雖然quickSort有很多種…<br>但只用我最熟悉的舉例XD<br>雖說是C++但基本上都是c寫法，但兩種語言我都利用了遞迴。</p>
-<h4 id="C-寫法"><a href="#C-寫法" class="headerlink" title="C++寫法"></a>C++寫法</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 將兩變數值"對調"</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>* a, <span class="keyword">int</span>* b)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> tmp = *a;</div><div class="line">    *a = *b;</div><div class="line">    *b = tmp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 快速排序(以最左邊的第一點為基準)</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>* arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> len)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i = left, j = right+<span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(left &lt; right) &#123;</div><div class="line">        <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</div><div class="line">            <span class="comment">// 向右找，比left大的索引值</span></div><div class="line">            <span class="keyword">while</span>(i+<span class="number">1</span> &lt; len &amp;&amp; arr[++i] &lt; arr[left]);</div><div class="line"></div><div class="line">            <span class="comment">// 向左找，比left小的索引值</span></div><div class="line">            <span class="keyword">while</span>(j<span class="number">-1</span> &gt; <span class="number">-1</span> &amp;&amp; arr[--j] &gt; arr[left]);</div><div class="line"></div><div class="line">            <span class="comment">// 當i == j相交，代表左右兩邊的大小都已經找過了</span></div><div class="line">            <span class="keyword">if</span>(i &gt;= j) <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            swap(arr+i, arr+j);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        swap(arr+left, arr+j);</div><div class="line">        quickSort(arr, left, j<span class="number">-1</span>, len);</div><div class="line">        quickSort(arr, j+<span class="number">1</span>, right, len);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="Haskell-寫法"><a href="#Haskell-寫法" class="headerlink" title="Haskell 寫法"></a>Haskell 寫法</h4><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> System.IO</div><div class="line"><span class="keyword">import</span> Control.Applicative</div><div class="line"></div><div class="line"><span class="title">quickSort</span> :: [<span class="type">Int</span>] -&gt; [<span class="type">Int</span>]</div><div class="line"><span class="title">quickSort</span> [] = []</div><div class="line"><span class="title">quickSort</span> (x:xs) =</div><div class="line">  <span class="keyword">let</span> maxList = filter (&gt;x) xs</div><div class="line">      minList = filter (&lt;x) xs</div><div class="line">  <span class="keyword">in</span> quickSort minList ++ [x] ++ quickSort maxList</div><div class="line"></div><div class="line"><span class="title">main</span> :: <span class="type">IO</span>()</div><div class="line"><span class="title">main</span> = <span class="keyword">do</span></div><div class="line">  <span class="keyword">let</span> aList = [<span class="number">30</span>, <span class="number">12</span>, <span class="number">55</span>, <span class="number">31</span>, <span class="number">98</span>, <span class="number">11</span>]</div><div class="line">      newList = map (show) $ quickSort aList</div><div class="line">  mapM print newList</div><div class="line">  putStr <span class="string">""</span></div></pre></td></tr></table></figure>
-<p>當然用快速排序的原因是因為遞迴特性，<br>會發現Haskell的code雖然抽象很多，<br>但即使你沒學過Haskell也能大致讀懂。<br>重點是code少打很多，<br>即使包含了main函數XDDDDDDDD</p>
-<h2 id="Maybe"><a href="#Maybe" class="headerlink" title="Maybe"></a>Maybe</h2><h3 id="捨棄Null，帶來更多抽象"><a href="#捨棄Null，帶來更多抽象" class="headerlink" title="捨棄Null，帶來更多抽象"></a>捨棄Null，帶來更多抽象</h3><p>像在C語言你若要表示空值陣列，你需要如何實現。<br>一般來說0不是代表空的，就是代表值本身是0。<br>如果在個專案，你可能需要一個統一的標準。</p>
-<p>但Haskell你可以利用Maybe取代0本身模糊的定義，<br>實際上還有個叫Either的型態讓變數可以是Left型態或Right型態，<br>可以包含更多抽象的資訊。</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">data</span> <span class="type">Maybe</span> a = <span class="type">Nothing</span> | <span class="type">Just</span> a 	<span class="comment">-- Defined in ‘GHC.Base’</span></span></div></pre></td></tr></table></figure>
-<p>如果這個值不存在，那就等於Nothing<br>如果值存在，那個值大概會長得像 Just …<br>但你不能直接對Just 5 做加減，大概是唯一的問題。<br>必須利用fmap函數，因為Maybe也是屬於Functor的型態<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="title">fmap</span> (+<span class="number">4</span>) (<span class="type">Just</span> <span class="number">8</span>)</div><div class="line">結果: <span class="type">Just</span> <span class="number">32</span></div><div class="line"><span class="title">fmap</span> (*<span class="number">8</span>) <span class="type">Nothing</span></div><div class="line">結果: <span class="type">Nothing</span></div></pre></td></tr></table></figure></p>
-<p>很合理吧！一個空值乘個8還是空值，並不會變成0或是空字串甚至是false之類的。</p>
-<p>雖然最後想介紹Functor，但因為還沒有理解很透徹所以不敢搬上來。<br>大致上都輕輕帶過，希望對想學Haskell有一點幫助。</p>
-<h1 id="結尾"><a href="#結尾" class="headerlink" title="結尾"></a>結尾</h1><p>學到現在的心得大概就是Haskell沒聽說的難，<br>但相較程序式語言的學習曲線確實挺陡峭，而且也有很多新觀念要學。</p>
-<p>不過應該也沒人推薦新手去學，但我認為適合學習的人如下：</p>
-<ol>
-<li>想弄懂函數式導向思維的人，Haskell沒有物件導向。</li>
-<li>你覺得程式語言大概就是一行行命令那樣的人，Haskell可能可以翻轉你的想法。</li>
-<li>自認聰明的人，Haskell在國外曾扮演過濾”計算機科學的學生”的角色，<br>但後來淘汰太多人所以被換成其他語言教學ＸＤＤＤＤ</li>
-</ol>
-<p>在台灣或許永遠不會流行吧，畢竟教授可能對這個語言都不曉得了。<br>所以不推薦為了求職而去學這門語言。</p>
-<p>不過介紹就到此為止，下台一鞠躬。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kabuto412rock.github.io/2017/02/05/Haskell入坑＿兩週多/" data-id="ciz6ot41m0001u6t6gsj2cnz4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
+        <textarea id="userInput" style="font-size: 1.5em;width: auto;"></textarea>
+        <div class="center-div keyboard">
+            <div class="keyboard-row">
+                <input type="button" class="button keyboard--little-finger" id="Backquote" value="`" />
+                <input type="button" class="button keyboard--little-finger" id="Digit1" value="1" />
+                <input type="button" class="button keyboard--ring-finger" id="Digit2" value="2" />
+                <input type="button" class="button keyboard--middle-finger" id="Digit3" value="3" />
+                <input type="button" class="button keyboard--force-finger" id="Digit4" value="4" />
+                <input type="button" class="button keyboard--force-finger" id="Digit5" value="5" />
+                <input type="button" class="button keyboard--force-finger" id="Digit6" value="6" />
+                <input type="button" class="button keyboard--force-finger" id="Digit7" value="7" />
+                <input type="button" class="button keyboard--middle-finger" id="Digit8" value="8" />
+                <input type="button" class="button keyboard--ring-finger" id="Digit9" value="9" />
+                <input type="button" class="button keyboard--little-finger" id="Digit0" value="0" />
+                <input type="button" class="button keyboard--little-finger" id="Minus" value="-" />
+                <input type="button" class="button keyboard--little-finger" id="Equal" value="=" />
+                <input type="button" class="button keyboard--little-finger" id="Backspace" value="back" />
+            </div>
+            <div class="keyboard-row">
+                <input type="button" class="button keyboard--little-finger keyboard-button--middle-size" id="Tab" value="Tab" />
+                <input type="button" class="button keyboard--little-finger" id="KeyQ" value="Q" />
+                <input type="button" class="button keyboard--ring-finger" id="KeyW" value="W" />
+                <input type="button" class="button keyboard--middle-finger" id="KeyE" value="E" />
+                <input type="button" class="button keyboard--force-finger" id="KeyR" value="R" />
+                <input type="button" class="button keyboard--force-finger" id="KeyT" value="T" />
+                <input type="button" class="button keyboard--force-finger" id="KeyY" value="Y" />
+                <input type="button" class="button keyboard--force-finger" id="KeyU" value="U" />
+                <input type="button" class="button keyboard--middle-finger" id="KeyI" value="I" />
+                <input type="button" class="button keyboard--ring-finger" id="KeyO" value="O" />
+                <input type="button" class="button keyboard--little-finger" id="KeyP" value="P" />
+                <input type="button" class="button keyboard--little-finger" id="BracketLeft" value="[" />
+                <input type="button" class="button keyboard--little-finger" id="BracketRight" value="]" />
+                <input type="button" class="button keyboard--little-finger" id="Backslash" value="\" />
+            </div>
+            <div class="keyboard-row">
+                <input type="button" class="button keyboard--little-finger" id="CapsLock" value="CapsLock" style="font-size: 18px;" />
+                <input type="button" class="button keyboard--little-finger" id="KeyA" value="A" />
+                <input type="button" class="button keyboard--ring-finger" id="KeyS" value="S" />
+                <input type="button" class="button keyboard--middle-finger" id="KeyD" value="D" />
+                <input type="button" class="button keyboard--force-finger" id="KeyF" value="F" />
+                <input type="button" class="button keyboard--force-finger" id="KeyG" value="G" />
+                <input type="button" class="button keyboard--force-finger" id="KeyH" value="H" />
+                <input type="button" class="button keyboard--force-finger" id="KeyJ" value="J" />
+                <input type="button" class="button keyboard--middle-finger" id="KeyK" value="K" />
+                <input type="button" class="button keyboard--ring-finger" id="KeyL" value="L" />
+                <input type="button" class="button keyboard--little-finger" id="Semicolon" value=";" />
+                <input type="button" class="button keyboard--little-finger" id="Quote" value="'" />
+                <input type="button" class="button keyboard--little-finger" id="Enter" value="Enter" />
+            </div>
+            <div class="keyboard-row">
+                <input type="button" class="button keyboard--little-finger" id="ShiftLeft" value="Shift" style="padding: 15px 50px;" />
+                <input type="button" class="button keyboard--little-finger" id="KeyZ" value="Z" />
+                <input type="button" class="button keyboard--ring-finger" id="KeyX" value="X" />
+                <input type="button" class="button keyboard--middle-finger" id="KeyC" value="C" />
+                <input type="button" class="button keyboard--force-finger" id="KeyV" value="V" />
+                <input type="button" class="button keyboard--force-finger" id="KeyB" value="B" />
+                <input type="button" class="button keyboard--force-finger" id="KeyN" value="N" />
+                <input type="button" class="button keyboard--force-finger" id="KeyM" value="M" />
+                <input type="button" class="button keyboard--middle-finger" id="Comma" value="," />
+                <input type="button" class="button keyboard--ring-finger" id="Period" value="." />
+                <input type="button" class="button keyboard--little-finger" id="Slash" value="/" />
+                <input type="button" class="button keyboard--little-finger" id="ShiftRight" value="Shift" style="padding: 15px 50px;" />
+            </div>
+            <div class="keyboard-row">
+                <input type="button" class="button keyboard--little-finger" id="ControlRight" value="Ctrl" />
+                <input type="button" class="button keyboard--little-finger" id="MetaLeft" value="Window" style="font-size: 18px;" />
+                <input type="button" class="button keyboard--ring-finger" id="AltLeft" value="Alt" />
+                <input type="button" class="button keyboard--thumb" id="Space" value="Space" style="padding: 15px 105px;" />
+                <input type="button" class="button ke" id="AltRight" value="Alt" />
+                <input type="button" class="button" id="MetaRight" value="Ctrl" />
+            </div>
 
 
-  
-    <article id="post-第一篇" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/02/第一篇/" class="article-date">
-  <time datetime="2017-02-02T08:13:00.000Z" itemprop="datePublished">2017-02-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/02/第一篇/">第一篇 測試用</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="測試-測試"><a href="#測試-測試" class="headerlink" title="測試!測試!"></a>測試!測試!</h3><p>雖然辦了github好一陣子，但一直都沒有多加利用有點可惜。<br>利用hexo來弄Blog，似乎是個不錯的主意</p>
-<p>來試試看有沒有支援haskell語法顯示</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> System.IO</div><div class="line"><span class="keyword">import</span> Data.Char</div><div class="line"><span class="keyword">import</span> Data.List</div><div class="line"><span class="keyword">import</span> Control.Concurrent</div><div class="line"><span class="keyword">import</span> GHC.Conc.Sync</div><div class="line"></div><div class="line"><span class="comment">-- 三節棍 型態</span></div><div class="line"><span class="class"><span class="keyword">data</span> <span class="type">Node</span> = <span class="type">Node</span> &#123;<span class="title">getX</span>:: <span class="type">Float</span>,<span class="title">getY</span>::<span class="type">Float</span>&#125; <span class="keyword">deriving</span> (<span class="type">Show</span>)</span></div><div class="line"><span class="class"><span class="keyword">data</span> <span class="type">ThreeStick</span> = <span class="type">ThreeStick</span> <span class="type">Node</span> <span class="type">Node</span> <span class="type">Node</span> <span class="type">Node</span></span></div><div class="line"></div><div class="line"><span class="title">stickWork</span> :: (<span class="type">ThreeStick</span>, <span class="type">ThreeStick</span>) -&gt; (<span class="type">ThreeStick</span>, <span class="type">ThreeStick</span>)</div><div class="line"><span class="title">stickWork</span> (a,b) = (a,b)</div><div class="line"></div><div class="line"><span class="title">canvas</span> :: [<span class="type">Node</span>] -&gt; [<span class="type">Node</span>]</div><div class="line"><span class="title">canvas</span> [] = []</div><div class="line"></div><div class="line"><span class="title">runAfterDelay</span> :: <span class="type">Int</span> -&gt; <span class="type">IO</span> () -&gt; <span class="type">IO</span> <span class="type">GHC</span>.<span class="type">Conc</span>.<span class="type">Sync</span>.<span class="type">ThreadId</span></div><div class="line"><span class="title">main</span> = <span class="keyword">do</span> line &lt;- fmap (intersperse '-' . reverse . map toUpper) getLine</div><div class="line">          <span class="keyword">case</span> <span class="number">123</span> <span class="keyword">of</span> <span class="number">123</span> -&gt; putStrLn <span class="string">"hello"</span></div><div class="line">                      <span class="number">789</span> -&gt; putStrLn <span class="string">"You"</span></div><div class="line">          putStrLn line</div><div class="line"></div><div class="line"><span class="title">runAfterDelay</span> t f = forkIO (threadDelay t &gt;&gt; f)</div></pre></td></tr></table></figure>
-<p>我的github: (“<a href="https://github.com/kabuto412rock" target="_blank" rel="external">https://github.com/kabuto412rock</a>“)</p>
+        </div>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kabuto412rock.github.io/2017/02/02/第一篇/" data-id="ciz6ot41t0004u6t651zsm93e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
+        <p>
+            友善提醒：
+            <br/> 左手：小指、無名指、中指、食指依序對應A、S、D、F<br/> 右手：食指、中指、無名指、小指對應J、K、L、;</br>
+            <br>按鍵I進入"編輯模式"，按鍵Esc進入瀏覽模式(預計會跳出小幫手說話，開發中)
+        </p>
+        <div class="fixed-bottom">
+
+            <img id='assistantImage' src="https://i.investopedia.com/image/jpeg/1515518605572/f8219f0ea8b4f53ef8a2abe9c16da42b.jpg"> </div>
 
 
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/31/hello-world/" class="article-date">
-  <time datetime="2017-01-31T01:07:06.000Z" itemprop="datePublished">2017-01-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kabuto412rock.github.io/2017/01/31/hello-world/" data-id="ciz6ot41s0003u6t62bmaflg9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/02/05/Haskell入坑＿兩週多/">Haskell入坑＿兩週多</a>
-          </li>
-        
-          <li>
-            <a href="/2017/02/02/第一篇/">第一篇 測試用</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/31/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 zone<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-  </div>
 </body>
+<script src="main.js" defer></script>
+
 </html>
