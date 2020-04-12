@@ -2,106 +2,156 @@
 <html>
 
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>My first three.js app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <!-- 標題 -->
+    <title>My first three.js app</title>
+
 </head>
 
-<body>
-    <p>題目:
-        <span id="problem" style="font-size: 1.5em;">
-            ASDFGHI
-        </span>
-    </p>
-    <p>輸入:
+<body class="container">
 
-        <textarea id="userInput" style="font-size: 1.5em;width: auto;"></textarea>
-        <div class="center-div keyboard">
-            <div class="keyboard-row">
-                <input type="button" class="button keyboard--little-finger" id="Backquote" value="`" />
-                <input type="button" class="button keyboard--little-finger" id="Digit1" value="1" />
-                <input type="button" class="button keyboard--ring-finger" id="Digit2" value="2" />
-                <input type="button" class="button keyboard--middle-finger" id="Digit3" value="3" />
-                <input type="button" class="button keyboard--force-finger" id="Digit4" value="4" />
-                <input type="button" class="button keyboard--force-finger" id="Digit5" value="5" />
-                <input type="button" class="button keyboard--force-finger" id="Digit6" value="6" />
-                <input type="button" class="button keyboard--force-finger" id="Digit7" value="7" />
-                <input type="button" class="button keyboard--middle-finger" id="Digit8" value="8" />
-                <input type="button" class="button keyboard--ring-finger" id="Digit9" value="9" />
-                <input type="button" class="button keyboard--little-finger" id="Digit0" value="0" />
-                <input type="button" class="button keyboard--little-finger" id="Minus" value="-" />
-                <input type="button" class="button keyboard--little-finger" id="Equal" value="=" />
-                <input type="button" class="button keyboard--little-finger" id="Backspace" value="back" />
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="">累計分數 <span id="userScore"></span></h1>
+        </div>
+        <div class='row justify-content-center'>
+
+            <div>
+                題目
+                <span id="problem" style="font-size: 2em;background: gray;">
+                    ASDFGHI
+                </span>
             </div>
-            <div class="keyboard-row">
-                <input type="button" class="button keyboard--little-finger keyboard-button--middle-size" id="Tab" value="Tab" />
-                <input type="button" class="button keyboard--little-finger" id="KeyQ" value="Q" />
-                <input type="button" class="button keyboard--ring-finger" id="KeyW" value="W" />
-                <input type="button" class="button keyboard--middle-finger" id="KeyE" value="E" />
-                <input type="button" class="button keyboard--force-finger" id="KeyR" value="R" />
-                <input type="button" class="button keyboard--force-finger" id="KeyT" value="T" />
-                <input type="button" class="button keyboard--force-finger" id="KeyY" value="Y" />
-                <input type="button" class="button keyboard--force-finger" id="KeyU" value="U" />
-                <input type="button" class="button keyboard--middle-finger" id="KeyI" value="I" />
-                <input type="button" class="button keyboard--ring-finger" id="KeyO" value="O" />
-                <input type="button" class="button keyboard--little-finger" id="KeyP" value="P" />
-                <input type="button" class="button keyboard--little-finger" id="BracketLeft" value="[" />
-                <input type="button" class="button keyboard--little-finger" id="BracketRight" value="]" />
-                <input type="button" class="button keyboard--little-finger" id="Backslash" value="\" />
+        </div>
+        <div class="row justify-content-center">
+
+            <div>
+                輸入
+                <input id="userInput" style="font-size: 2em;width: auto;" />
+
             </div>
-            <div class="keyboard-row">
-                <input type="button" class="button keyboard--little-finger" id="CapsLock" value="CapsLock" style="font-size: 18px;" />
-                <input type="button" class="button keyboard--little-finger" id="KeyA" value="A" />
-                <input type="button" class="button keyboard--ring-finger" id="KeyS" value="S" />
-                <input type="button" class="button keyboard--middle-finger" id="KeyD" value="D" />
-                <input type="button" class="button keyboard--force-finger" id="KeyF" value="F" />
-                <input type="button" class="button keyboard--force-finger" id="KeyG" value="G" />
-                <input type="button" class="button keyboard--force-finger" id="KeyH" value="H" />
-                <input type="button" class="button keyboard--force-finger" id="KeyJ" value="J" />
-                <input type="button" class="button keyboard--middle-finger" id="KeyK" value="K" />
-                <input type="button" class="button keyboard--ring-finger" id="KeyL" value="L" />
-                <input type="button" class="button keyboard--little-finger" id="Semicolon" value=";" />
-                <input type="button" class="button keyboard--little-finger" id="Quote" value="'" />
-                <input type="button" class="button keyboard--little-finger" id="Enter" value="Enter" />
-            </div>
-            <div class="keyboard-row">
-                <input type="button" class="button keyboard--little-finger" id="ShiftLeft" value="Shift" style="padding: 15px 50px;" />
-                <input type="button" class="button keyboard--little-finger" id="KeyZ" value="Z" />
-                <input type="button" class="button keyboard--ring-finger" id="KeyX" value="X" />
-                <input type="button" class="button keyboard--middle-finger" id="KeyC" value="C" />
-                <input type="button" class="button keyboard--force-finger" id="KeyV" value="V" />
-                <input type="button" class="button keyboard--force-finger" id="KeyB" value="B" />
-                <input type="button" class="button keyboard--force-finger" id="KeyN" value="N" />
-                <input type="button" class="button keyboard--force-finger" id="KeyM" value="M" />
-                <input type="button" class="button keyboard--middle-finger" id="Comma" value="," />
-                <input type="button" class="button keyboard--ring-finger" id="Period" value="." />
-                <input type="button" class="button keyboard--little-finger" id="Slash" value="/" />
-                <input type="button" class="button keyboard--little-finger" id="ShiftRight" value="Shift" style="padding: 15px 50px;" />
-            </div>
-            <div class="keyboard-row">
-                <input type="button" class="button keyboard--little-finger" id="ControlRight" value="Ctrl" />
-                <input type="button" class="button keyboard--little-finger" id="MetaLeft" value="Window" style="font-size: 18px;" />
-                <input type="button" class="button keyboard--ring-finger" id="AltLeft" value="Alt" />
-                <input type="button" class="button keyboard--thumb" id="Space" value="Space" style="padding: 15px 105px;" />
-                <input type="button" class="button ke" id="AltRight" value="Alt" />
-                <input type="button" class="button" id="MetaRight" value="Ctrl" />
-            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row keyboard-row">
+            <input type="button" class="button col keyboard--little-finger" id="Backquote" value="`" />
+            <input type="button" class="button col keyboard--little-finger" id="Digit1" value="1" />
+            <input type="button" class="button col keyboard--ring-finger" id="Digit2" value="2" />
+            <input type="button" class="button col keyboard--middle-finger" id="Digit3" value="3" />
+            <input type="button" class="button col keyboard--force-finger" id="Digit4" value="4" />
+            <input type="button" class="button col keyboard--force-finger" id="Digit5" value="5" />
+            <input type="button" class="button col keyboard--force-finger" id="Digit6" value="6" />
+            <input type="button" class="button col keyboard--force-finger" id="Digit7" value="7" />
+            <input type="button" class="button col keyboard--middle-finger" id="Digit8" value="8" />
+            <input type="button" class="button col keyboard--ring-finger" id="Digit9" value="9" />
+            <input type="button" class="button col keyboard--little-finger" id="Digit0" value="0" />
+            <input type="button" class="button col keyboard--little-finger" id="Minus" value="-" />
+            <input type="button" class="button col keyboard--little-finger" id="Equal" value="=" />
+            <input type="button" class="button col keyboard--little-finger" id="Backspace" value="back" />
+        </div>
+        <div class="row keyboard-row">
+            <input type="button" class="button col keyboard--little-finger" id="Tab" value="Tab" />
+            <input type="button" class="button col keyboard--little-finger" id="KeyQ" value="Q" />
+            <input type="button" class="button col keyboard--ring-finger" id="KeyW" value="W" />
+            <input type="button" class="button col keyboard--middle-finger" id="KeyE" value="E" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyR" value="R" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyT" value="T" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyY" value="Y" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyU" value="U" />
+            <input type="button" class="button col keyboard--middle-finger" id="KeyI" value="I" />
+            <input type="button" class="button col keyboard--ring-finger" id="KeyO" value="O" />
+            <input type="button" class="button col keyboard--little-finger" id="KeyP" value="P" />
+            <input type="button" class="button col keyboard--little-finger" id="BracketLeft" value="[" />
+            <input type="button" class="button col keyboard--little-finger" id="BracketRight" value="]" />
+            <input type="button" class="button col keyboard--little-finger" id="Backslash" value="\" />
+        </div>
+        <div class="row keyboard-row">
+            <input type="button" class="button col keyboard--little-finger" id="CapsLock" value="CapsLock" />
+            <input type="button" class="button col keyboard--little-finger" id="KeyA" value="A" />
+            <input type="button" class="button col keyboard--ring-finger" id="KeyS" value="S" />
+            <input type="button" class="button col keyboard--middle-finger" id="KeyD" value="D" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyF" value="F" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyG" value="G" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyH" value="H" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyJ" value="J" />
+            <input type="button" class="button col keyboard--middle-finger" id="KeyK" value="K" />
+            <input type="button" class="button col keyboard--ring-finger" id="KeyL" value="L" />
+            <input type="button" class="button col keyboard--little-finger" id="Semicolon" value=";" />
+            <input type="button" class="button col keyboard--little-finger" id="Quote" value="'" />
+            <input type="button" class="button col keyboard--little-finger" id="Enter" value="Enter" />
+        </div>
+        <div class="row keyboard-row">
+            <input type="button" class="button col-2 keyboard--little-finger" id="ShiftLeft" value="Shift" />
+            <input type="button" class="button col keyboard--little-finger" id="KeyZ" value="Z" />
+            <input type="button" class="button col keyboard--ring-finger" id="KeyX" value="X" />
+            <input type="button" class="button col keyboard--middle-finger" id="KeyC" value="C" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyV" value="V" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyB" value="B" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyN" value="N" />
+            <input type="button" class="button col keyboard--force-finger" id="KeyM" value="M" />
+            <input type="button" class="button col keyboard--middle-finger" id="Comma" value="," />
+            <input type="button" class="button col keyboard--ring-finger" id="Period" value="." />
+            <input type="button" class="button col keyboard--little-finger" id="Slash" value="/" />
+            <input type="button" class="button col keyboard--little-finger" id="ShiftRight" value="Shift" />
+        </div>
+        <div class=" row keyboard-row">
+            <input type="button" class="button col-1 keyboard--little-finger" id="ControlRight" value="Ctrl" />
+            <input type="button" class="button col-1 keyboard--little-finger" id="MetaLeft" value="Window" />
+            <input type="button" class="button col-1 keyboard--ring-finger" id="AltLeft" value="Alt" />
+            <input type="button" class="button col-5 keyboard--thumb" id="Space" value="Space" />
+            <input type="button" class="button col keyboard--middle-finger" id="AltRight" value="Alt" />
+            <input type="button" class="button col keyboard--ring-finger" id="MetaRight" value="Ctrl" />
+            <div class="col" id=""></div>
+            <div class="col" id=""></div>
+            <div class="col" id=""></div>
+            <div class="col" id=""></div>
+            <div class="col" id=""></div>
+            <div class="col" id=""></div>
+            <div class="col" id=""></div>
+            <div class="col" id=""></div>
+            <div class="col" id=""></div>
+            <div class="col" id=""></div>
 
 
 
         </div>
 
-        <p>
-            友善提醒：
-            <br/> 左手：小指、無名指、中指、食指依序對應A、S、D、F<br/> 右手：食指、中指、無名指、小指對應J、K、L、;</br>
-            <br>按鍵I進入"編輯模式"，按鍵Esc進入瀏覽模式(預計會跳出小幫手說話，開發中)
-        </p>
-        <div class="fixed-bottom">
 
-            <img id='assistantImage' src="https://i.investopedia.com/image/jpeg/1515518605572/f8219f0ea8b4f53ef8a2abe9c16da42b.jpg"> </div>
 
+    </div>
+
+
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">英打練習(Let's prcnglish typing)</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <script src="main.js" defer></script>
 
 </html>

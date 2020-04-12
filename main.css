@@ -1,33 +1,30 @@
-.keyboard {
-    border-radius: 20px;
-    padding: 10px;
-    padding-bottom: 20px;
-    border-style: ridge;
-    border-width: 8px;
-    border-color: black;
-    outline-width: 8px;
-    outline: greenyellow;
-    background: white;
+/* .keyboard {
+    /* border-radius: 20px; */
+
+
+/*
+padding: 10px;
+padding-bottom: 20px;
+border-width: 8px;
+border-color: black;
+outline-width: 8px;
+outline: greenyellow;
+background: white;
+
+}
+*/
+
+.wrong-text {
+    color: red;
 }
 
-.keyboard-row {}
+.correct-text {
+    color: black;
+}
 
-.button {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-left: auto;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-    flex: 1;
+.keyboard-row {
+    border-radius: 20px;
+    border-color: black;
 }
 
 .keyboard-button--middle-size {
@@ -41,27 +38,32 @@
 .button_active {
     /* background-color: #3e8e41; */
     box-shadow: 0 5px #666;
-    transform: translateY(15px);
+    transform: translateY(1em);
 }
 
 .keyboard--thumb {
     background-color: red;
+    color: white;
 }
 
 .keyboard--force-finger {
     background-color: orange;
+    color: white;
 }
 
 .keyboard--middle-finger {
     background-color: #AAAA00;
+    color: white;
 }
 
 .keyboard--ring-finger {
     background-color: blue;
+    color: white;
 }
 
 .keyboard--little-finger {
     background-color: purple;
+    color: white;
 }
 
 body {
@@ -77,7 +79,7 @@ body {
     width: 80%;
 }
 
-p {
+.center-p {
     display: block;
     background: #333;
     padding-left: 0;
@@ -89,22 +91,6 @@ p {
     background: #aaa;
 }
 
-
-/* 漂浮助理() */
-
-.fixed-bottom {
-    position: fixed;
-    bottom: 0;
-    right: 120px;
-    width: auto;
-    border-style: hidden;
-    /* border: 3px solid hsl(85, 68%, 40%); */
-    border-radius: 30px;
-}
-
-.fixed-bottom img {
-    border-radius: 70%;
-    max-width: 300px;
-    width: auto;
-    overflow: hidden;
+#problem {
+    color: white;
 }
