@@ -15,7 +15,7 @@ var UserState;
 var current_user_state = UserState.Edit;
 var keyboard_string = " Backquote Digit1 Digit2 Digit3 Digit4 Digit5 Digit6 Digit7 Digit8 Digit9 Digit0 Minus Equal Backspace Tab KeyQ KeyW KeyE KeyR KeyT KeyY KeyU KeyI KeyO KeyP BracketLeft BracketRight Backslash ControlRight KeyA KeyS KeyD KeyF KeyG KeyH KeyJ KeyK KeyL Semicolon Quote Enter ShiftLeft KeyZ KeyX KeyC KeyV KeyB KeyN KeyM Comma Period Slash ShiftRight CapsLock AltLeft MetaLeft Space MetaRight AltRight ArrowLeft ArrowUp ArrowDown ArrowRight ArrowDown";
 var keyboard_list = keyboard_string.split(" ");
-var levels_string_list = ["asdfghjkl;", "qwertyuiop", "zxcvbnm,./", "`1234567890-="];
+var levels_problem_string = "asdfghjkl;'qwertyuiopzxcvbnm,./`1234567890-=";
 var keyboard_doms = {};
 var keyboard_doms_text = {};
 for (var key in keyboard_list) {
@@ -29,15 +29,17 @@ for (var key in keyboard_list) {
 document.addEventListener('keydown', logKeydown);
 document.addEventListener('keyup', logKeyup);
 function init() {
-    var mayHaveLevel = document.cookie.match("level:([0-9]+);");
+    var mayHaveLevel = document.cookie.match("([0-9]+)");
     if (mayHaveLevel == null) {
-        document.cookie = 'level:0;';
+        document.cookie = '0';
+        currentLevel = 0;
     }
     else {
         currentLevel = parseInt(mayHaveLevel[1]);
-        document.cookie = "level:" + currentLevel;
+        document.cookie = "" + currentLevel;
     }
-    createNewLevel();
+    $("#userScore").text("" + currentLevel * 100);
+    createNewLevel(currentLevel);
 }
 // 鍵盤按鍵按下時。
 function logKeydown(e) {
@@ -117,12 +119,7 @@ function logKeyup(e) {
 function createLevel(problemTemplate) {
     // 設定題目
     var randomProblem = problemTemplate + problemTemplate;
-    for (var i = 0; i < randomProblem.length; i += 3) {
-        var randomPosition = Math.floor(Math.random() * randomProblem.length);
-        var a = randomProblem.slice(0, randomPosition);
-        var b = randomProblem.slice(randomPosition);
-        randomProblem = b + a;
-    }
+    randomProblem = randomString(randomProblem);
     // 設定當前的問題字串
     currentProblemString = randomProblem;
     // 將問題字串賦值給problem顯示
@@ -140,16 +137,33 @@ function goNextLevel() {
     console.log('Go next level');
     // 關卡+1
     currentLevel += 1;
-    document.cookie = "level:" + currentLevel;
+    document.cookie = "" + currentLevel;
     $("#userScore").text("" + currentLevel * 100);
     // TODO:暫定使用最簡單的level題目字串
     // 生成一個新題目
-    createNewLevel();
+    createNewLevel(currentLevel);
 }
-function createNewLevel() {
-    createLevel(levels_string_list[Math.floor(Math.random() * levels_string_list.length)]);
+function createNewLevel(level) {
+    if (level < levels_problem_string.length * 2) {
+        createLevel(levels_problem_string.slice(0, Math.floor(level / 2) + 1));
+    }
+    else {
+        var new_problem_string = randomString(levels_problem_string);
+        createLevel(new_problem_string.slice(20));
+    }
+}
+function randomString(s) {
+    var randS = "";
+    for (var i = 0; i < s.length; i += 1) {
+        var randomPosition = Math.floor(Math.random() * s.length);
+        var a = s.slice(0, randomPosition);
+        var b = s.slice(randomPosition);
+        randS = b + a;
+    }
+    return randS;
 }
 $(document).ready(function () {
+    init();
     // 當關閉modal時，自動進入編輯模式
     $('#myModal').on('hidden.bs.modal', function () {
         // 觸發 "編輯模式"

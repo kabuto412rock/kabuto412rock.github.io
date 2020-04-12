@@ -16,7 +16,7 @@ enum UserState {
 let current_user_state = UserState.Edit
 const keyboard_string: String = " Backquote Digit1 Digit2 Digit3 Digit4 Digit5 Digit6 Digit7 Digit8 Digit9 Digit0 Minus Equal Backspace Tab KeyQ KeyW KeyE KeyR KeyT KeyY KeyU KeyI KeyO KeyP BracketLeft BracketRight Backslash ControlRight KeyA KeyS KeyD KeyF KeyG KeyH KeyJ KeyK KeyL Semicolon Quote Enter ShiftLeft KeyZ KeyX KeyC KeyV KeyB KeyN KeyM Comma Period Slash ShiftRight CapsLock AltLeft MetaLeft Space MetaRight AltRight ArrowLeft ArrowUp ArrowDown ArrowRight ArrowDown"
 const keyboard_list = keyboard_string.split(" ")
-const levels_string_list = ["asdfghjkl;", "qwertyuiop", "zxcvbnm,./", "`1234567890-="]
+const levels_problem_string = "asdfghjkl;'qwertyuiopzxcvbnm,./`1234567890-="
 let keyboard_doms: { [name: string]: HTMLElement; } = {}
 let keyboard_doms_text: { [name: string]: string; } = {}
 for (var key in keyboard_list) {
@@ -31,15 +31,18 @@ document.addEventListener('keydown', logKeydown)
 document.addEventListener('keyup', logKeyup)
 
 function init() {
-  let mayHaveLevel = document.cookie.match("level:([0-9]+);")
+  let mayHaveLevel = document.cookie.match("([0-9]+)")
   if (mayHaveLevel == null) {
-    document.cookie = 'level:0;'
-  }else {
+    document.cookie = '0'
+    currentLevel = 0;
+  } else {
     currentLevel = parseInt(mayHaveLevel[1]);
-    document.cookie = `level:${currentLevel}`
+    document.cookie = `${currentLevel}`
   }
-  
-  createNewLevel()
+
+  $("#userScore").text(`${currentLevel * 100}`)
+
+  createNewLevel(currentLevel)
 }
 // 鍵盤按鍵按下時。
 function logKeydown(e: KeyboardEvent) {
@@ -121,13 +124,7 @@ function logKeyup(e: KeyboardEvent) {
 function createLevel(problemTemplate: string) {
   // 設定題目
   let randomProblem = problemTemplate + problemTemplate;
-  for (let i = 0; i < randomProblem.length; i += 3) {
-    let randomPosition = Math.floor(Math.random() * randomProblem.length)
-    let a = randomProblem.slice(0, randomPosition);
-    let b = randomProblem.slice(randomPosition);
-    randomProblem = b + a
-  }
-
+  randomProblem = randomString(randomProblem)
 
   // 設定當前的問題字串
   currentProblemString = randomProblem
@@ -146,18 +143,33 @@ function goNextLevel() {
   console.log('Go next level')
   // 關卡+1
   currentLevel += 1
-  document.cookie = `level:${currentLevel}`
+  document.cookie = `${currentLevel}`
   $("#userScore").text(`${currentLevel * 100}`)
   // TODO:暫定使用最簡單的level題目字串
   // 生成一個新題目
-  createNewLevel()
+  createNewLevel(currentLevel)
 }
 
-function createNewLevel() {
-  createLevel(levels_string_list[Math.floor(Math.random() * levels_string_list.length)])
+function createNewLevel(level: number) {
+  if (level < levels_problem_string.length * 2) {
+    createLevel(levels_problem_string.slice(0, Math.floor(level / 2) + 1))
+  } else {
+    let new_problem_string = randomString(levels_problem_string)
+    createLevel(new_problem_string.slice(20))
+  }
 }
-
+function randomString(s: string): string {
+  let randS = ""
+  for (let i = 0; i < s.length; i += 1) {
+    let randomPosition = Math.floor(Math.random() * s.length)
+    let a = s.slice(0, randomPosition);
+    let b = s.slice(randomPosition);
+    randS = b + a
+  }
+  return randS
+}
 $(document).ready(function () {
+  init()
 
   // 當關閉modal時，自動進入編輯模式
   $('#myModal').on('hidden.bs.modal', function () {
